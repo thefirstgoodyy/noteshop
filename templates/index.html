@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Приветик, Иван Анатольевич :)</title>
+</head>
+<body>
+{% extends "base.html" %}
+
+{% block content %}
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+{% for label in Labels %}
+<p>
+<div >
+    <form action = "{% url 'notebooks' label.id %}" method="get">
+
+        <input type="submit" value="{{ label.name }}">
+        <img src = '{{label.picture.url}}' height ="150" width="250" />
+    </form>
+
+</div>
+</p>
+{% endfor %}
+
+{% endblock %}
+</body>
+</html>

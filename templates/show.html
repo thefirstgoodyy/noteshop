@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{Label}}</title>
+</head>
+<header></header>
+<body>
+<div>
+<table border="2" bordercolor="black">
+    <tr bgcolor="#BDBDBD">
+        <td>
+            Фирма
+        </td>
+        <td>Модель
+        </td>
+        <td>Изображение
+        </td>
+        <td>Цена
+        </td>
+        <td>Тип процессора
+        </td>
+        <td>Оперативная память, Мб
+        </td>
+        <td>
+            Размер,дюйм
+        </td>
+        <td>
+            Видеоадаптер
+        </td>
+        <td>
+            Емкость HDD, Гб
+        </td>
+        <td>Наличие DVD привода
+        </td>
+        <td>Количество USB
+        </td>
+
+        </tr>
+{% for product in Notebooks %}
+    <tr>
+        <td>
+{{Label}}
+        </td>
+        <td>
+            {{product.name}}
+        </td>
+        <td>
+            <img src='{{product.pictute.url}}' width="50" height="50"/>
+        </td>
+        <td>
+            {{product.price}}
+        </td>
+        <td>
+            {{product.processor}}
+        </td>
+        <td>
+            {{product.ram}}
+        </td>
+        <td>
+            {{product.size}}
+        </td>
+        <td>
+            {{product.videocard}}
+        </td>
+        <td>
+            {{product.hdd_mass}}
+        </td><td>
+            {{product.dvd}}
+        </td><td>
+            {{product.usb}}
+        </td>
+
+
+
+        </tr>
+{% endfor %}
+    </table>
+
+
+    </div>
+
+</body>
+
+</html>
