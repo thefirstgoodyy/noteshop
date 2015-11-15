@@ -28,19 +28,19 @@
 <header >
     <div class="he">
         <H1 >Онлайн магазин ноутбуков</H1>
-        <h5>Алишер Санатулы, пока студент гр.8ВМ4В</h5>
+        <h5>Алишер Санатулы</h5>
         </div>
     {% if user.is_authenticated %}
     <div class = "user">
    Привет {{ user.username }}
         <form action="{% url 'logout' %}" method='post'>
             {% csrf_token %}
-            <input type="SUBMIT" VALUE="Logout">
+            <input type="SUBMIT" VALUE="Выйти">
             </form>
         </div>
     <div>
         <form action ="{% url 'Basket:show'%}" method="get">
-            <input type="submit" value = "basket">
+            <input type="submit" value = "Корзина">
         </form>
     </div>
     {% else %}
@@ -53,7 +53,7 @@
     <input type="password" name="password" value="" id="password">
 
 
-    <input type="submit" value="login" />
+    <input type="submit" value="Зайти" />
     <input type="hidden" name="next" value="{{ next|escape }}" />
 
   </form>
