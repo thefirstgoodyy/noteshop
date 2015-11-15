@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{Label}}</title>
+    <title></title>
 </head>
-<header></header>
 <body>
-<div>
 <table border="2" bordercolor="black">
     <tr bgcolor="#BDBDBD">
         <td>
@@ -35,56 +33,57 @@
         </td>
         <td>Количество USB
         </td>
-        <td bgcolor="green"></td>
+        <td bgcolor = "red">
+
+        </td>
+
         </tr>
-{% for product in Notebooks %}
+{% for item in Items %}
     <tr>
         <td>
-{{Label}}
+{{item.product.label}}
         </td>
         <td>
-            {{product.name}}
+            {{item.product.name}}
         </td>
         <td>
-            <img src='{{product.picture.url}}' width="50" height="50"/>
+            <img src='{{item.product.picture.url}}' width="50" height="50"/>
         </td>
         <td>
-            {{product.price}}
+            {{item.product.price}}
         </td>
         <td>
-            {{product.processor}}
+            {{item.product.processor}}
         </td>
         <td>
-            {{product.ram}}
+            {{item.product.ram}}
         </td>
         <td>
-            {{product.size}}
+            {{item.product.size}}
         </td>
         <td>
-            {{product.videocard}}
+            {{item.product.videocard}}
         </td>
         <td>
-            {{product.hdd_mass}}
+            {{item.product.hdd_mass}}
         </td><td>
-            {{product.dvd}}
+            {{item.product.dvd}}
         </td><td>
-            {{product.usb}}
+            {{item.product.usb}}
         </td>
-        <td bgcolor="green">
-        <form action="{% url 'Basket:add' product.id %}" method = "post">
-    {% csrf_token %}
-        <input type="submit" value = "+">
-</form>
-</td>
+        <td bgcolor="red">
+            <form action = "{% url 'Basket:deleteRow' item.id %}" method="delete">
+                <input type="submit" value="X">
+            </form>
+        </td>
+
 
         </tr>
+    {% endfor %}
+</table>
 
-{% endfor %}
-    </table>
 
-
-    </div>
+<h1>Цена за все {{ price }}</h1>
 
 </body>
-
 </html>

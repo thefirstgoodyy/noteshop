@@ -16,21 +16,23 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf.urls.static import static
-from market import views
+
 from noteshop import settings
+from Person import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^main/', views.index),
-    url(r'^(?P<label>\d+)/notebooks/$',
-        views.show_notebooks,
-        name="notebooks")
+    url(r'^signup$', views.newUser, name='signup'),
+    url(r'^create$', views.createUser, name='createuser'),
+    url(r'^signin$', views.authentication, name='signin'),
+    url(r'^logout$', views.logout_view, name='logout'),
+    url(r'^', include('Product.urls', namespace='Products',
+                      app_name='Products')),
+    url(r'^basket/', include('Basket.urls', namespace='Basket',
+                             app_name='Basket')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
-
-
-

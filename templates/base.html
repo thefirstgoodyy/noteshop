@@ -13,13 +13,55 @@
     border: solid 1px black;
     float: left;
    }
- </style>
+    .user {
+    width: 100%;
+    height:150px;
+    background: red;
+    padding: 5px;
+    padding-left: 40px;
+    border: solid 1px black;
+    float: right;
+        }
+    </style>
+    {% load staticfiles %}
 </head>
 <header >
     <div class="he">
         <H1 >Онлайн магазин ноутбуков</H1>
         <h5>Алишер Санатулы, пока студент гр.8ВМ4В</h5>
         </div>
+    {% if user.is_authenticated %}
+    <div class = "user">
+   Привет {{ user.username }}
+        <form action="{% url 'logout' %}" method='post'>
+            {% csrf_token %}
+            <input type="SUBMIT" VALUE="Logout">
+            </form>
+        </div>
+    <div>
+        <form action ="{% url 'Basket:show'%}" method="get">
+            <input type="submit" value = "basket">
+        </form>
+    </div>
+    {% else %}
+    <div class = "user">
+      <form action="{% url 'signin' %}" method='post'>
+          {% csrf_token %}
+    <label for="telephone">Логин:</label>
+    <input type="text" name="telephone" value="" id="telephone">
+    <label for="password">Пароль:</label>
+    <input type="password" name="password" value="" id="password">
+
+
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next|escape }}" />
+
+  </form>
+        <form action = "{% url 'signup' %}" method="get">
+            <input type = "submit" value="ЗАРЕГИСТРИРУЙСЯ ПОЖАЙЛУСТА, А ТО КУРСАЧ НЕ СДАМ">
+        </form>
+    </div>
+    {% endif%}
 </header>
 <body>
 

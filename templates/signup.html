@@ -1,0 +1,36 @@
+<form action = "{% url 'createuser' %}" method = post>
+    {% csrf_token %}
+   <div><label for="tel">Ваш телефон</label>
+    <input type="tel" pattern="8[0-9]{10}" name="telephone" id ='tel'/>
+       </div> <div>
+    <label for="emailu">Ваш email</label>
+    <input type="emailu" name ="emailu" id ="emailu"/>
+    </div>
+    <div >
+    <label for="passwordu">Пароль</label>
+    <input type="password" placeholder="Password" id="passwordu" required>
+    <label for="confirm_password">Повторите Пароль</label>
+    <input type="password" placeholder="Confirm Password" id="confirm_password" required></div>
+    <div><label for="first">Имя</label>
+    <input type="text" name="first_name" id="first"/>
+     </div>
+    <div>
+    <label for="last">Фамилия</label>
+
+    <input type="text" name="last_name" id = "last"/></div>
+    <button type="submit" class="pure-button pure-button-primary">Confirm</button>
+    <script>
+    var password = document.getElementById("password"),
+    confirm_password = document.getElementById("confirm_password");
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        }
+        else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+password.onchange = validatePassword;
+confirm_password.onkeyup = validatePassword;
+</script>
+</form>
