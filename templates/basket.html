@@ -72,7 +72,7 @@
             {{item.product.usb}}
         </td>
         <td bgcolor="red">
-            <form action = "{% url 'Basket:deleteRow' item.id %}" method="delete">
+            <form action = "{% url 'basket:deleteRow' item.id %}" method="delete">
                 <input type="submit" value="X">
             </form>
         </td>

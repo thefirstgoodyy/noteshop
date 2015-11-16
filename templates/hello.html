@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="{% url 'person:signup'%}" method="post">
+    {% csrf_token %}
+    <label for="username">Логин</label>
+    <input type ="text" name="username" id="username"/>
+    <label for = "password">Пароль</label>
+    <input type="password" name = "password" id="password"/>
+    <input type="passwordconfirmation" name = "passwordconfirmation" value="Повторите пароль" id="passwordconfirmation"/>
+    <input type="submit" value="GO FAGGS"/>
+</form>
+</body>1
+</html>

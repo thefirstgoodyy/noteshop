@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from Basket import views
+from basket import views
 
 urlpatterns = [
     url(r'^$', views.showBasket, name="show"),

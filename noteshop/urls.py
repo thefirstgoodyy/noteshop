@@ -18,18 +18,18 @@ from django.contrib import admin
 from django.conf.urls.static import static
 
 from noteshop import settings
-from Person import views
+from person import views
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^signup$', views.newUser, name='signup'),
-    url(r'^create$', views.createUser, name='createuser'),
+    url(r'^create$', views.create_user, name='createuser'),
     url(r'^signin$', views.authentication, name='signin'),
     url(r'^logout$', views.logout_view, name='logout'),
-    url(r'^', include('Product.urls', namespace='Products',
+    url(r'^', include('product.urls', namespace='Products',
                       app_name='Products')),
-    url(r'^basket/', include('Basket.urls', namespace='Basket',
-                             app_name='Basket')),
+    url(r'^basket/', include('basket.urls', namespace='basket',
+                             app_name='basket')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL,
